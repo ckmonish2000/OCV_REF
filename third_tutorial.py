@@ -16,10 +16,10 @@ while True:
   frame2 = cv2.resize(frame,(0,0),fx=0.5,fy=0.5)
   image = np.zeros(frame.shape,np.uint8)
   
-  image[:height//2,:width//2] = frame2
+  image[:height//2,:width//2] = cv2.cvtColor(frame2,cv2.COLOR_BGR2HSV)
   image[height//2:,:width//2] = cv2.rotate(frame2,cv2.ROTATE_180)
   image[:height//2,width//2:] = cv2.rotate(frame2,cv2.ROTATE_180)
-  image[height//2:,width//2:] = frame2
+  image[height//2:,width//2:] = cv2.cvtColor(frame2,cv2.COLOR_BGR2XYZ)
 
   cv2.imshow('frame',image)
 
